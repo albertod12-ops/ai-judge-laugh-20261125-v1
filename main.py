@@ -20,6 +20,8 @@ TEXT = (
 def main() -> None:
     assert 1 <= len(TEXT) <= 200, "entry must be 1-200 characters, got %d" % len(TEXT)
     assert "\n" not in TEXT, "entry must be a single line"
+    assert TEXT == TEXT.strip(), "entry must not lead or trail with whitespace"
+    assert "  " not in TEXT, "entry must not hold a double space"
     assert TEXT.endswith("."), "entry must end with a full stop"
     os.umask(0o022)
     os.makedirs("/output", exist_ok=True)
